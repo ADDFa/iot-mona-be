@@ -38,6 +38,23 @@ class EggController extends Controller
         return Response::success($result);
     }
 
+    public function totalClassification()
+    {
+        $eggs = Egg::all();
+
+        $rottenEgg = $eggs->sum("rotten_egg");
+        $smallEgg = $eggs->sum("small_egg");
+        $mediumEgg = $eggs->sum("medium_egg");
+        $largeEgg = $eggs->sum("large_egg");
+
+        return Response::success([
+            "rotten_egg"    => $rottenEgg,
+            "small_egg"    => $smallEgg,
+            "medium_egg"    => $mediumEgg,
+            "large_egg"    => $largeEgg
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

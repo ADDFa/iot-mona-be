@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(EggController::class)->group(function () {
     Route::get("egg", "index");
+    Route::get("egg/total-clasification", "totalClassification");
     Route::post("egg", "store");
 });
